@@ -104,7 +104,9 @@
     isNormalUser = true;
     description = "miguel";
     extraGroups = [ "networkmanager" "wheel" "video" "audio" "lp" ];
+    shell = pkgs.zsh;
   };
+  programs.zsh.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
