@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./vm.nix
     ];
 
   # Bootloader.
@@ -142,7 +143,6 @@
     htop
     texlive.combined.scheme-full
     gnumake
-    spice-gtk
   ];
 
   # fonts
