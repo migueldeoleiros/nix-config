@@ -1,104 +1,19 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, vars, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./vm.nix
-    ];
+  imports = (
+    import ../modules/vm ++
+    import ../modules/shell ++
+    import ../modules/home
+  );
 
-  # Bootloader.
-  boot.loader = {
-    systemd-boot = {
-      enable = true;
-      configurationLimit = 8;
-    };
-    efi.canTouchEfiVariables = true;
-  };
-
-  # Garbage Collection
-  nix = {
-    settings.auto-optimise-store = true;
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-  };
-
-  # Networking
-  networking = {
-    hostName = "nitro";
-    # wireless.enable = true;
-    networkmanager.enable = true;
-  };
-
-  # Set your time zone.
-  time.timeZone = "Europe/Madrid";
-
-  # Select internationalisation properties.
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = {
-      LC_ADDRESS = "es_ES.UTF-8";
-      LC_MEASUREMENT = "es_ES.UTF-8";
-      LC_MONETARY = "es_ES.UTF-8";
-      LC_PAPER = "es_ES.UTF-8";
-      LC_TELEPHONE = "es_ES.UTF-8";
-      LC_TIME = "es_ES.UTF-8";
-    };
-  };
-
-  # Display manager and desktop.
-  services = {
-    xserver = {
-      enable = true;
-      displayManager = {
-        gdm.enable = true;
-	      defaultSession = "gnome";
-      };
-      desktopManager.gnome.enable = true;
-    };
-  };
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "es";
-    xkbVariant = "";
-  };
-
-  # Configure console keymap
-  console.keyMap = "es";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    #jack.enable = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.miguel = {
+  # Define a user account
+  users.users.${vars.user} = {
     isNormalUser = true;
-    description = "miguel";
     extraGroups = [ "networkmanager" "wheel" "video" "audio" "lp" ];
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -144,9 +59,87 @@
     lmodern
   ];  
 
+  # Bootloader.
+  boot.loader = {
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 8;
+    };
+    efi.canTouchEfiVariables = true;
+  };
+
+  # Garbage Collection
+  nix = {
+    settings.auto-optimise-store = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+  };
+
+  # Networking
+  networking = {
+    hostName = "nitro";
+    # wireless.enable = true;
+    networkmanager.enable = true;
+  };
+
+  # Set your time zone.
+  time.timeZone = "Europe/Madrid";
+
+  # Select internationalisation properties.
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "es_ES.UTF-8";
+      LC_MEASUREMENT = "es_ES.UTF-8";
+      LC_MONETARY = "es_ES.UTF-8";
+      LC_PAPER = "es_ES.UTF-8";
+      LC_TELEPHONE = "es_ES.UTF-8";
+      LC_TIME = "es_ES.UTF-8";
+    };
+  };
+
+  services = {
+    xserver = { # Display manager and desktop
+      enable = true;
+      displayManager = {
+        gdm.enable = true;
+	      defaultSession = "gnome";
+      };
+      desktopManager.gnome.enable = true;
+      libinput.enable = true; # Enable touchpad
+    };
+    printing = {
+      enable = true; 
+    };
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      #jack.enable = true;
+    };
+  };
+
+  # Enable sound
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+
+  # Configure keymap in X11
+  services.xserver = {
+    layout = "es";
+    xkbVariant = "";
+  };
+
+  # Configure console keymap
+  console.keyMap = "es";
+
   # Set enviroment variables
   environment.variables = {
-    EDITOR = "neovim";
+    EDITOR = "nvim";
   };
 
   programs.java = {
@@ -205,4 +198,14 @@
   };
 
   system.stateVersion = "23.05";
+
+  home-manager.users.${vars.user} = {
+    home = {
+      stateVersion = "23.05";
+    };
+
+    programs = {
+      home-manager.enable = true;
+    };
+  };
 }

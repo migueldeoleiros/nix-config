@@ -1,0 +1,4 @@
+[
+  ./alias.nix
+  ./zsh.nix
+]

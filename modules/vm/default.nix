@@ -1,0 +1,3 @@
+[
+  ./virtmanager.nix
+]

@@ -1,37 +1,27 @@
 {
-  description = "A very basic flake";
+  description = "NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     home-manager = {
-      url = github:nix-community/home-manager;
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-	      config.allowUnfree = true;
+      vars = {
+        user = "miguel";
       };
-      lib = nixpkgs.lib;
     in {
-      nixosConfigurations = {
-        miguel = lib.nixosSystem {
-	        inherit system;
-	        modules = [
-	          ./configuration.nix 
-	          home-manager.nixosModules.home-manager {
-	            home-manager.useGlobalPkgs = true;
-	            home-manager.useUserPackages = true;
-	            home-manager.users.miguel = {
-	              imports = [ ./home.nix ];
-	            };
-	          }
-	        ];
-        };
-      };
+      nixosConfigurations = (
+        import ./host {
+          inherit (nixpkgs) lib;
+          inherit inputs nixpkgs home-manager vars;
+        }
+      );
     };
 }
