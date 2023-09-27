@@ -1,9 +1,10 @@
-{ config, pkgs, lib, inputs, vars, ... }:
+{ config, pkgs, lib, inputs, kmonad, vars, ... }:
 
 {
   imports = (
     import ../modules/vm ++
     import ../modules/shell ++
+    import ../modules/kmonad ++
     import ../modules/home
   );
 

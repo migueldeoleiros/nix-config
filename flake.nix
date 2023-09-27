@@ -9,9 +9,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    kmonad.url = "github:kmonad/kmonad?dir=nix";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, kmonad, ... }:
     let
       vars = {
         user = "miguel";
@@ -20,7 +21,7 @@
       nixosConfigurations = (
         import ./host {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager vars;
+          inherit inputs nixpkgs home-manager kmonad vars;
         }
       );
     };
