@@ -11,7 +11,7 @@
   # Define a user account
   users.users.${vars.user} = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" "lp" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "lp" "input" "uinput"];
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
@@ -132,7 +132,7 @@
   # Configure keymap in X11
   services.xserver = {
     layout = "es";
-    xkbVariant = "";
+    xkbOptions = "compose:ralt";
   };
 
   # Configure console keymap

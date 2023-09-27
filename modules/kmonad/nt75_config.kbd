@@ -41,39 +41,25 @@
 (defalias 
 	b (around rctl lft)
 	w (around rctl rght)
-	v (layer-add sel)
     ynk C-c
     pst C-v
     cut C-x
 )
 
-;; VI-selection-like-mode-aliases 
-(defalias 
-	vb (around rctl S-lft)
-	vw (around rctl S-rght)
-	vlf S-lft
-	vrg S-rght
-	vup S-up
-	vdo S-down
-	vho S-home
-	ven S-end
-	ves (layer-rem sel)
-)
-
 (deflayer standard
-  caps
+  esc   
   @lan2 1    2    3    4    5    6    7    8    9    0    -    =   bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  @cesc a    s    d    f    g    h    j    k    l    ;  @lang   ret
+  lctl a    s    d    f    g    h    j    k    l    ;  @lang   ret
   lsft   z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lalt met             spc              @alt  _  rctl
 )
 
 (deflayer accents
-  caps
+  esc
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    é    r    t    y    ú    í    ó    p    [    ]    \
-  @cesc á    s    d    f    g    h    j    k    l    ;    '    ret
+  lctl á    s    d    f    g    h    j    k    l    ;    '    ret
   @slan  z    x    ç    v    b    ñ    m    ,    .    ¿    rsft
   lctl -  met lalt           spc       ralt  rctl
 )
@@ -88,7 +74,7 @@
 )
 
 (deflayer accents2
-  caps
+  esc
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    é    r    t    y    ü    í    õ    p    [    ]    \
   @cesc ã    s    d    f    g    h    j    k    l    ;    '    ret
@@ -110,15 +96,6 @@
   _    1    2    3    4    5    6    7    8    9    0    _    _    _
   _    _    @w   end  _    _    @ynk _    _    _    @pst _    _    _
   _    home _    @cut _    _    lft  down up   rght _    _    _  
-  _    _    _    _    @v   @b   _    _    _    _    _    _   
-  _    _    _                 _                 _   _   _    
-)
-
-(deflayer sel
-  -
-  _    1    2    3    4    5    6    7    8    9    0    _    _    _
-  _    _    @vw  @ven _    _    _    _    _    _    _    _    _    _
-  @ves @vho _    _    _    _    @vlf @vdo @vup  @vrg _    _    _  
-  _    _    _    _    @ves @vb   _    _    _    _    _    _   
+  _    _    _    _    -    @b   _    _    _    _    _    _   
   _    _    _                 _                 _   _   _    
 )
