@@ -26,6 +26,7 @@
       gnome.gnome-font-viewer
       gnome.gnome-tweaks
       qbittorrent
+      (pkgs.callPackage ../../pkgs/st.nix {})
     ];
     
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
