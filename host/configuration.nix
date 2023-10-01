@@ -5,6 +5,7 @@
     import ../modules/vm ++
     import ../modules/shell ++
     import ../modules/kmonad ++
+    import ../modules/powersaver ++
     import ../modules/home
   );
 
@@ -183,18 +184,6 @@
       # Make sure to use the correct Bus ID values for your system!
       amdgpuBusId = "PCI:1:0:0";
       nvidiaBusId = "PCI:5:0:0";
-    };
-  };
-
-  # Power saver mode
-  specialisation = {
-    power-saver.configuration = {
-      system.nixos.tags = [ "power-saver" ];
-      hardware.nvidia = {
-        prime.offload.enable = lib.mkForce true;
-        prime.offload.enableOffloadCmd = lib.mkForce true;
-        prime.sync.enable = lib.mkForce false;
-      };
     };
   };
 

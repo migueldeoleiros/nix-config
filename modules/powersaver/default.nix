@@ -1,0 +1,3 @@
+[
+  ./powersaver.nix
+]
