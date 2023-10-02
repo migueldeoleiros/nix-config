@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-
   # Power saver mode on boot 
   specialisation = {
     power-saver.configuration = {
@@ -32,9 +31,6 @@
 
   # Disable GNOMEs power management
   services.power-profiles-daemon.enable = false;
-
-  # Enable powertop
-  powerManagement.powertop.enable = true;
 
   # Enable thermald if using Intel CPU
   # services.thermald.enable = true;
