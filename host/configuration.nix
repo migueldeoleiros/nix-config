@@ -30,7 +30,6 @@
     gh
     neofetch
     python3
-    lshw
     wine
     bat
     unzip
@@ -142,11 +141,6 @@
   # Set enviroment variables
   environment.variables = {
     EDITOR = "nvim";
-  };
-
-  programs.java = {
-    enable = true;
-    package = pkgs.jdk17;
   };
 
   # Nvidia GPU

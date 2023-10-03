@@ -21,8 +21,6 @@
       gradience
       steam
       discord
-      eclipses.eclipse-jee
-      vscode
       gnome.gnome-font-viewer
       gnome.gnome-tweaks
       qbittorrent
