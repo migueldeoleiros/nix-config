@@ -24,6 +24,9 @@
       gnome.gnome-font-viewer
       gnome.gnome-tweaks
       qbittorrent
+      pixelorama
+      gimp
+      inkscape
       (pkgs.callPackage ../../pkgs/st.nix {})
     ];
     
