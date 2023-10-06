@@ -9,10 +9,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland.url = "github:hyprwm/Hyprland";
+
     kmonad.url = "github:kmonad/kmonad?dir=nix";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, kmonad, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, kmonad, hyprland, ... }:
     let
       vars = {
         user = "miguel";
@@ -21,7 +23,7 @@
       nixosConfigurations = (
         import ./host {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager kmonad vars;
+          inherit inputs nixpkgs home-manager kmonad hyprland vars;
         }
       );
     };

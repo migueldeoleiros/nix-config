@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, kmonad, vars, ... }:
+{ lib, inputs, nixpkgs, home-manager, kmonad, hyprland, vars, ... }:
 
 let
   system = "x86_64-linux";
