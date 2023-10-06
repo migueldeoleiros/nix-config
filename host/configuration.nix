@@ -46,6 +46,8 @@
     htop
     texlive.combined.scheme-full
     gnumake
+    exfatprogs
+    ntfs3g
   ];
 
   # fonts
