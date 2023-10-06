@@ -6,6 +6,7 @@
     import ../modules/shell ++
     import ../modules/kmonad ++
     import ../modules/powersaver ++
+    import ../modules/rofi ++
     import ../modules/home
   );
 
