@@ -64,9 +64,11 @@
 
   # Bootloader.
   boot.loader = {
-    systemd-boot = {
+    grub = {
       enable = true;
-      configurationLimit = 8;
+      device = "nodev";
+      useOSProber = true;
+      configurationLimit = 10;
     };
     efi.canTouchEfiVariables = true;
   };
