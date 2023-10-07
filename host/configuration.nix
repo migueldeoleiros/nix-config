@@ -92,7 +92,8 @@
     networkmanager.enable = true;
   };
 
-  # Set your time zone.
+  # Set your time.
+  services.ntp.enable = true;
   time.timeZone = "Europe/Madrid";
 
   # Select internationalisation properties.
