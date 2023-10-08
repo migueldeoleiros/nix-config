@@ -16,7 +16,7 @@
         monitor=,preferred,auto,1,mirror,eDP-1
         
         # Execute at launch
-        exec-once = hyprpaper
+        exec-once = hyprpaper & waybar
         
         # source = ~/.config/hypr/myColors.conf
         
