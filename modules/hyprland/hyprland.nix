@@ -2,6 +2,9 @@
 
 {
   home-manager.users.${vars.user} = {
+    home.packages = with pkgs; [
+      brightnessctl playerctl
+    ];
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -121,7 +124,20 @@
         bind = $mod, Space, exec, rofi -show drun
         # bind = $mod, P, pseudo, # dwindle
         # bind = $mod, J, togglesplit, # dwindle
-        
+
+        # audio and brightness
+        bind=,xf86audioplay,exec,playerctl play-pause
+        bind=,xf86audiostop,exec,playerctl stop
+        bind=,xf86audioprev,exec,playerctl previous
+        bind=,xf86audionext,exec,playerctl next
+
+        bind=,xf86audioraisevolume,exec,wpctl set-volume @DEFAULT_SINK@ 5%+
+        bind=,xf86audiolowervolume,exec,wpctl set-volume @DEFAULT_SINK@ 5%-
+        bind=,xf86audiomute,exec,wpctl set-mute @DEFAULT_SINK@ toggle
+
+        bind=,xf86monbrightnessup,exec,brightnessctl set +10
+        bind=,xf86monbrightnessdown,exec,brightnessctl set 10-
+
         # window resize
         bind = $mod, R, submap, resize
         
