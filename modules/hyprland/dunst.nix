@@ -7,14 +7,14 @@
       settings = {
         global = {
           follow = "mouse";
-          origin = "top-center";
+          origin = "top-right";
           width = 300;
           height = 300;
           padding = 10;
           horizontal_padding = 10;
           frame_width = 0;
           idle_threshold = 120;
-          font = "Source Code Pro 13";
+          font = "Source Code Pro 10";
           alignment = "center";
           vertical_alignment = "center";
           show_age_threshold = 60;

@@ -22,7 +22,7 @@
       steam
       discord
       gnome.gnome-font-viewer
-      gnome.gnome-tweaks
+      gnome.nautilus
       qbittorrent
       pixelorama
       gimp

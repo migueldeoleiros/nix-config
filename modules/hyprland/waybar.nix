@@ -96,10 +96,12 @@
 
         #workspaces button {
           padding: 0 5px;
+          color: #FFFFFF;
         }        
 
         #workspaces button.active {
-          background-color: #111111;
+          background-color: #222222;
+          color: #FFFFFF;
         }
 
         #clock,
@@ -132,7 +134,7 @@
         
         #tray > .needs-attention {
             -gtk-icon-effect: highlight;
-            background-color: #111111;
+            background-color: #222222;
         }
 
       '';

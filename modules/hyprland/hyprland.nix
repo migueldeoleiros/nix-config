@@ -28,9 +28,11 @@
         env = XDG_SESSION_TYPE,wayland
         env = __GLX_VENDOR_LIBRARY_NAME,nvidia
         env = WLR_NO_HARDWARE_CURSORS,1
+        env = WLR_DRM_NO_ATOMIC,1
+        env = WLR_DRM_DEVICES,/dev/dri/card1:/dev/dri/card0
         
         input {
-            kb_layout = us
+            kb_layout = us,es
             kb_variant =
             kb_model =
             kb_options = ctrl:nocaps
@@ -54,7 +56,7 @@
         
             layout = master
         
-            allow_tearing = false
+            allow_tearing = true
         }
         
         xwayland {
@@ -117,10 +119,12 @@
         
         bind = $mod, Return, exec, st
         bind = $mod, Q, killactive, 
-        bind = $mod, Escape, exit, 
+        bind = $mod SHIFT, Escape, exit, 
         bind = $mod, F, exec, nautilus
+        bind = $mod, W, exec, firefox
         bind = $mod, E, exec, emacs
         bind = $mod, N, exec, networkmanager_dmenu
+        bind = $mod, A, exec, hyprctl switchxkblayout at-translated-set-2-keyboard next
         bind = $mod, T, togglefloating, 
         bind = $mod, Space, exec, rofi -show drun
         # bind = $mod, P, pseudo, # dwindle

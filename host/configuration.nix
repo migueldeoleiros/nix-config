@@ -4,7 +4,7 @@
   imports = (
     import ../modules/vm ++
     import ../modules/shell ++
-    import ../modules/kmonad ++
+    #import ../modules/kmonad ++
     import ../modules/powersaver ++
     import ../modules/rofi ++
     import ../modules/hyprland ++
