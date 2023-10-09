@@ -7,7 +7,9 @@
   };
   home-manager.users.${vars.user} = {
     home.packages = with pkgs; [
-      brightnessctl playerctl libva libsForQt5.qt5ct
+      brightnessctl playerctl
+      libva libsForQt5.qt5ct
+      wayshot slurp
     ];
     wayland.windowManager.hyprland = {
       enable = true;
@@ -132,6 +134,8 @@
         bind = $mod, Space, exec, rofi -show drun
         # bind = $mod, P, pseudo, # dwindle
         # bind = $mod, J, togglesplit, # dwindle
+
+        bind = ,Print, exec, wayshot -f ~/pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).jpg -s "$(slurp)"
 
         # audio and brightness
         bind=,xf86audioplay,exec,playerctl play-pause

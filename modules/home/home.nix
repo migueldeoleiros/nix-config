@@ -23,6 +23,7 @@
       webcord
       gnome.gnome-font-viewer
       gnome.nautilus
+      gnome.eog
       qbittorrent
       pixelorama
       gimp
