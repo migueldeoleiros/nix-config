@@ -66,10 +66,8 @@
 
   # Bootloader.
   boot.loader = {
-    grub = {
+    systemd-boot = {
       enable = true;
-      device = "nodev";
-      useOSProber = true;
       configurationLimit = 10;
     };
     efi.canTouchEfiVariables = true;
@@ -110,15 +108,15 @@
   };
 
   services = {
-    xserver = { # Display manager and desktop
-      enable = true;
-      displayManager = {
-        gdm.enable = true;
-	      defaultSession = "gnome";
-      };
-      desktopManager.gnome.enable = true;
-      libinput.enable = true; # Enable touchpad
-    };
+    #xserver = { # Display manager and desktop
+      #enable = true;
+      #displayManager = {
+        #gdm.enable = true;
+	      #defaultSession = "gnome";
+      #};
+      #desktopManager.gnome.enable = true;
+      #libinput.enable = true; # Enable touchpad
+    #};
     printing = {
       enable = true; 
     };
