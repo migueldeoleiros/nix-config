@@ -1,9 +1,13 @@
 {config, pkgs, inputs, vars, ...}:
 
 {
+  programs.hyprland = {
+    enable = true;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland; 
+  };
   home-manager.users.${vars.user} = {
     home.packages = with pkgs; [
-      brightnessctl playerctl
+      brightnessctl playerctl libva libsForQt5.qt5ct
     ];
     wayland.windowManager.hyprland = {
       enable = true;
@@ -26,10 +30,9 @@
         env = XCURSOR_SIZE,24
         env = LIBVA_DRIVER_NAME,nvidia
         env = XDG_SESSION_TYPE,wayland
-        env = __GLX_VENDOR_LIBRARY_NAME,nvidia
         env = WLR_NO_HARDWARE_CURSORS,1
         env = WLR_DRM_NO_ATOMIC,1
-        env = WLR_DRM_DEVICES,/dev/dri/card1:/dev/dri/card0
+        #env = WLR_DRM_DEVICES,/dev/dri/card1:/dev/dri/card0
         
         input {
             kb_layout = us,es

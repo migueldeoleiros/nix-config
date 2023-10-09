@@ -20,7 +20,7 @@
       lutris
       gradience
       steam
-      discord
+      webcord
       gnome.gnome-font-viewer
       gnome.nautilus
       qbittorrent
