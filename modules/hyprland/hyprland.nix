@@ -120,6 +120,7 @@
         bind = $mod, Escape, exit, 
         bind = $mod, F, exec, nautilus
         bind = $mod, E, exec, emacs
+        bind = $mod, N, exec, networkmanager_dmenu
         bind = $mod, T, togglefloating, 
         bind = $mod, Space, exec, rofi -show drun
         # bind = $mod, P, pseudo, # dwindle
