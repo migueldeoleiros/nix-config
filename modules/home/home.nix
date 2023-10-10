@@ -10,10 +10,10 @@
     home.packages = with pkgs; [
       firefox
       thunderbird
-      emacs
+      emacs29-pgtk
       libreoffice
       kitty
-      vlc
+      mpv
       telegram-desktop
       amberol
       evince
