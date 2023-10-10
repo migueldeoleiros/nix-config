@@ -26,6 +26,7 @@
         
         # Execute at launch
         exec-once = hyprpaper & waybar & dunst
+        exec-once = emacs --daemon 
         
         # source = ~/.config/hypr/myColors.conf
         
@@ -127,7 +128,7 @@
         bind = $mod SHIFT, Escape, exit, 
         bind = $mod, F, exec, nautilus
         bind = $mod, W, exec, firefox
-        bind = $mod, E, exec, emacs
+        bind = $mod, E, exec, emacsclient --create-frame
         bind = $mod, N, exec, networkmanager_dmenu
         bind = $mod, A, exec, hyprctl switchxkblayout at-translated-set-2-keyboard next
         bind = $mod, T, togglefloating, 
