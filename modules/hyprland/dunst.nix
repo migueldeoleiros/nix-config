@@ -24,18 +24,18 @@
           corner_radius = 10;
         };
         urgency_low = {
-          background = "#000000";
-          foreground = "#a8a8a8";
+          background = "#090a11";
+          foreground = "#afb4c0";
           timeout = 5;
         };
         urgency_normal = {
-          background = "#111111";
-          foreground = "#FFFFFF";
+          background = "#13141b";
+          foreground = "#d4dae8";
           timeout = 10;
         };
         urgency_critical = {
           background = "#660A1E";
-          foreground = "#FFFFFF";
+          foreground = "#d4dae8";
           timeout = 0;
         };
       };
