@@ -90,18 +90,18 @@
         }
 
         window#waybar {
-          background: #000000;
-          color: #FFFFFF;
+          background: #090a11;
+          color: #d4dae8;
         }
 
         #workspaces button {
           padding: 0 5px;
-          color: #FFFFFF;
+          color: #afb4c0;
         }        
 
         #workspaces button.active {
-          background-color: #222222;
-          color: #FFFFFF;
+          background-color: #242532;
+          color: #d4dae8;
         }
 
         #clock,
@@ -121,11 +121,11 @@
         #scratchpad,
         #mpd {
           padding: 0 10px;
-          color: #ffffff;
+          color: #d4dae8;
         }
 
         #tray {
-            background-color: #000000;
+            background-color: #090a11;
         }
         
         #tray > .passive {
@@ -134,7 +134,7 @@
         
         #tray > .needs-attention {
             -gtk-icon-effect: highlight;
-            background-color: #222222;
+            background-color: #242532;
         }
 
       '';
