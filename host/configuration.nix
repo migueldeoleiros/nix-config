@@ -109,15 +109,6 @@
   };
 
   services = {
-    #xserver = { # Display manager and desktop
-      #enable = true;
-      #displayManager = {
-        #gdm.enable = true;
-	      #defaultSession = "gnome";
-      #};
-      #desktopManager.gnome.enable = true;
-      #libinput.enable = true; # Enable touchpad
-    #};
     printing = {
       enable = true; 
     };
@@ -169,31 +160,21 @@
     driSupport32Bit = true;
   };
 
+  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = { # Modesetting is required.
     modesetting.enable = true;
-
-    # Enable power management (do not disable this unless you have a reason to).
-    # Likely to cause problems on laptops and with screen tearing if disabled.
     powerManagement.enable = true;
-
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    open = true;
-
-    # Enable the Nvidia settings menu,
-	  # accessible via `nvidia-settings`.
+    open = false;
     nvidiaSettings = true;
 
-    # You may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     prime = {
       sync.enable = true;
-
-      # Make sure to use the correct Bus ID values for your system!
       amdgpuBusId = "PCI:1:0:0";
       nvidiaBusId = "PCI:5:0:0";
     };
