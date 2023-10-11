@@ -8,9 +8,9 @@
 
     home.file = {
       ".config/hypr/hyprpaper.conf".text = ''
-        preload = ~/wallpapers/wave.jpg
-        wallpaper = eDP-1,~/wallpapers/wave.jpg
-        wallpaper = HDMI-A-1,~/wallpapers/wave.jpg
+        preload = ~/wallpapers/darkWhosh.png
+        wallpaper = eDP-1,~/wallpapers/darkWhosh.png
+        wallpaper = HDMI-A-1,~/wallpapers/darkWhosh.png
       '';
     };
   };
