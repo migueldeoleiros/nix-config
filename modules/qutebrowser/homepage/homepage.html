@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Home</title>
+    <link rel="stylesheet" href="homepage.css">
+    <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body>
+    <div id="search">
+        <input id="search-field" type="text" name="search-field"/>
+    </div>
+    <div class="container">
+        <div id="clock"></div>
+        <div class="bookmark-container">
+            <div class="bookmark-set">
+            <div class="bookmark-title">HOME</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://youtube.com">YouTube</a>
+                    <a class="bookmark" href="https://github.com">GitHub</a>
+                    <a class="bookmark" href="https://phind.com">Phind</a>
+                    <a class="bookmark" href="https://chat.openai.com">ChatGPT</a>
+                    <a class="bookmark" href="https://linkedin.com">LinkedIn</a>
+                    <a class="bookmark" href="https://campusvirtual.udc.gal/">Campus UDC</a>
+                    <a class="bookmark" href="https://web.whatsapp.com/">WhatsApp</a>
+                    <a class="bookmark" href="https://discord.com/channels/@me">Discord</a>
+                    <a class="bookmark" href="https://animewave.to/">animewave</a>
+                    <a class="bookmark" href="https://anilist.co/">anilist</a>
+                    <a class="bookmark" href="https://docs.google.com/spreadsheets/d/1HQRMJgu_zArp-sLnvFMDzOyjdsht87eFLECxMK858lA/edit#gid=0">One Pace</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Search on enter key event
+        document.getElementById("search-field").addEventListener("keydown",  event => { 
+            if (event.keyCode === 13) {
+                var val = document.getElementById("search-field").value;
+                window.open("https://search.brave.com/search?q=" + val,"_self");
+            }
+        });
+        // Get current time and format
+        getTime = () => {
+            let date = new Date(),
+                min = date.getMinutes(),
+                sec = date.getSeconds(),
+                hour = date.getHours();
+
+            return "" + 
+                (hour < 10 ? ("0" + hour) : hour) + ":" + 
+                (min < 10 ? ("0" + min) : min) + ":" + 
+                (sec < 10 ? ("0" + sec) : sec);
+        }
+
+        window.onload = () => {
+            let xhr = new XMLHttpRequest();
+            // Set up the clock
+            document.getElementById("clock").innerHTML = getTime();
+            // Set clock interval to tick clock
+            setInterval( () => {
+                document.getElementById("clock").innerHTML = getTime();
+            },100);
+        }
+
+        document.addEventListener("keydown", event => {
+            if (event.keyCode == 32) {          // Spacebar code to open search
+                document.getElementById('search').style.display = 'flex';
+                document.getElementById('search-field').focus();
+            } else if (event.keyCode == 27) {   // Esc to close search
+                document.getElementById('search-field').value = '';
+                document.getElementById('search-field').blur();
+                document.getElementById('search').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
+

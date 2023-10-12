@@ -68,6 +68,10 @@ in
 c.statusbar.padding = {'top': 5, 'bottom': 7, 'right': 6, 'left': 8}";
 
       settings = {
+
+        url.default_page = "file:///home/${vars.user}/.config/qutebrowser/homepage/homepage.html"; 
+        url.start_pages = "file:///home/${vars.user}/.config/qutebrowser/homepage/homepage.html"; 
+
         #adblock
         content.blocking = {
           method = "both"; 
