@@ -1,3 +1,4 @@
 [
   ./qutebrowser.nix
+  ./greasemonkey.nix
 ]
