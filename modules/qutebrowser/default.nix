@@ -1,0 +1,3 @@
+[
+  ./qutebrowser.nix
+]

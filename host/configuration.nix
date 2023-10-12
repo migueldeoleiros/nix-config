@@ -9,6 +9,7 @@
     import ../modules/rofi ++
     import ../modules/hyprland ++
     import ../modules/gtk ++
+    import ../modules/qutebrowser ++
     import ../modules/home
   );
 
