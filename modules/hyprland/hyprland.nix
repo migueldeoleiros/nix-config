@@ -127,7 +127,7 @@
         bind = $mod, Q, killactive, 
         bind = $mod SHIFT, Escape, exit, 
         bind = $mod, F, exec, nautilus
-        bind = $mod, W, exec, firefox
+        bind = $mod, W, exec, qutebrowser
         bind = $mod, E, exec, emacsclient --create-frame
         bind = $mod, N, exec, networkmanager_dmenu
         bind = $mod, A, exec, hyprctl switchxkblayout at-translated-set-2-keyboard next
