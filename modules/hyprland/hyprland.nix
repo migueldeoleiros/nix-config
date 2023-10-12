@@ -57,8 +57,8 @@
             gaps_in = 3
             gaps_out = 5
             border_size = 1
-            col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-            col.inactive_border = rgba(595959aa)
+            col.active_border = rgb(7BA3F4) rgb(51BACD) 45deg
+            col.inactive_border = rgb(242532)
         
             layout = master
         
@@ -199,6 +199,12 @@
         # Move/resize windows with mod + LMB/RMB and dragging
         bindm = $mod, mouse:272, movewindow
         bindm = $mod, mouse:273, resizewindow
+
+        # Disable keybinds
+        bind=$mod Shift, B,submap,clean
+        submap=clean
+        bind=$mod Shift, B,submap,reset
+        submap=reset
       ''; 
     };
   };
