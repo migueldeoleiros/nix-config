@@ -53,6 +53,8 @@
     gnumake
     exfatprogs
     ntfs3g
+    zip
+    pandoc
   ];
 
   # fonts
