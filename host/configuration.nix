@@ -55,6 +55,7 @@
     ntfs3g
     zip
     pandoc
+    killall
   ];
 
   # fonts

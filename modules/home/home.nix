@@ -28,6 +28,8 @@
       pixelorama
       gimp
       inkscape
+      osu-lazer-bin
+      anki
       (pkgs.callPackage ../../pkgs/st.nix {})
     ];
 
