@@ -52,6 +52,10 @@
         
             sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
         }
+        device:at-translated-set-2-keyboard {
+            kb_layout=es,us
+            kb_options = ctrl:nocaps
+        }
         
         general {
             gaps_in = 3
@@ -130,13 +134,16 @@
         bind = $mod, W, exec, qutebrowser
         bind = $mod, E, exec, emacsclient --create-frame
         bind = $mod, N, exec, networkmanager_dmenu
-        bind = $mod, A, exec, hyprctl switchxkblayout at-translated-set-2-keyboard next
+        bind = $mod, A, exec, hyprctl switchxkblayout at-translated-set-2-keyboard next & hyprctl switchxkblayout evision-usb-device next
         bind = $mod, T, togglefloating, 
         bind = $mod, Space, exec, rofi -show drun
         # bind = $mod, P, pseudo, # dwindle
         # bind = $mod, J, togglesplit, # dwindle
 
         bind = ,Print, exec, wayshot -f ~/pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).jpg -s "$(slurp)"
+
+        # Switch waybar on/off
+        bindr = $mod, B, exec, kill $(pidof waybar) || waybar
 
         # audio and brightness
         bind=,xf86audioplay,exec,playerctl play-pause
@@ -199,9 +206,6 @@
         # Move/resize windows with mod + LMB/RMB and dragging
         bindm = $mod, mouse:272, movewindow
         bindm = $mod, mouse:273, resizewindow
-
-        # Switch to monitor
-        bindr = $mod, B, exec, kill $(pidof waybar) || waybar
 
         # Disable keybinds
         bind=$mod Shift, B,submap,clean
