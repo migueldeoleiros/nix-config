@@ -200,6 +200,9 @@
         bindm = $mod, mouse:272, movewindow
         bindm = $mod, mouse:273, resizewindow
 
+        # Switch to monitor
+        bindr = $mod, B, exec, kill $(pidof waybar) || waybar
+
         # Disable keybinds
         bind=$mod Shift, B,submap,clean
         submap=clean
