@@ -1,75 +1,94 @@
+;; -*- mode: lisp -*-
+
 (defwidget bar []
-  (centerbox :orientation "h"
+  (centerbox :orientation "v" 
+    (time)
     (workspaces)
-    (music)
-    (sidestuff)))
+    (sidestuff)
+    ))
 
 (defwidget sidestuff []
-  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-    (metric :label "🔊"
+  (box :class "sidestuff" :orientation "v" :space-evenly false :valign "end"
+    (metric :label "󰕾"
             :value volume
-            :onchange "amixer -D pulse sset Master {}%")
-    (metric :label ""
-            :value {EWW_RAM.used_mem_perc}
-            :onchange "")
-    (metric :label "💾"
-            :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
-            :onchange "")
-    time))
+            :onchange "amixer sset Master {}%")
+    (metric :label "󱊣"
+            :value battery
+            :onchange "acpi")
+  ))
 
 (defwidget workspaces []
   (box :class "workspaces"
-       :orientation "h"
-       :space-evenly true
-       :halign "start"
-       :spacing 10
-    (button :onclick "wmctrl -s 0" 1)
-    (button :onclick "wmctrl -s 1" 2)
-    (button :onclick "wmctrl -s 2" 3)
-    (button :onclick "wmctrl -s 3" 4)
-    (button :onclick "wmctrl -s 4" 5)
-    (button :onclick "wmctrl -s 5" 6)
-    (button :onclick "wmctrl -s 6" 7)
-    (button :onclick "wmctrl -s 7" 8)
-    (button :onclick "wmctrl -s 8" 9)))
-
-(defwidget music []
-  (box :class "music"
-       :orientation "h"
+       :orientation "v"
        :space-evenly false
-       :halign "center"
-    {music != "" ? "🎵${music}" : ""}))
-
+       :valign "top"
+       :spacing 8
+    (button :onclick "hyprctl dispatch split-workspace 1" 1)
+    (button :onclick "hyprctl dispatch split-workspace 2" 2)
+    (button :onclick "hyprctl dispatch split-workspace 3" 3)
+    (button :onclick "hyprctl dispatch split-workspace 4" 4)
+    (button :onclick "hyprctl dispatch split-workspace 5" 5)))
 
 (defwidget metric [label value onchange]
-  (box :orientation "h"
+  (box :orientation "v"
        :class "metric"
        :space-evenly false
     (box :class "label" label)
     (scale :min 0
            :max 101
+           :flipped true 
+           :orientation "v" 
            :active {onchange != ""}
            :value value
            :onchange onchange)))
 
-
-
-(deflisten music :initial ""
-  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
-
 (defpoll volume :interval "1s"
   "amixer sget Master | awk -F '[^0-9]+' '/Left:/{print $3}'")
 
-(defpoll time :interval "10s"
-  "date '+%H:%M %b %d, %Y'")
+(defpoll battery :interval "1s"
+  "acpi -b | grep 'Battery 1' | awk -F ', ' '{print $2}' | awk -F '%' '{print $1}'")
+
+(defwidget time []
+  (box :class "time" :orientation "v" :space-evenly false :valign "top"
+	   (button	:onclick "scripts/popup calendar"	
+			    :class "time-hour" hour)
+	   (button	:onclick "scripts/popup calendar"	
+			    :class "time-min"  min)))
+
+(defpoll hour :interval "10s" "date +%H")
+(defpoll min  :interval "10s" "date +%M")
 
 (defwindow bar
   :monitor 0
   :windowtype "dock"
+  :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"
-                      :width "90%"
-                      :height "10px"
-                      :anchor "top center")
-  :reserve (struts :side "top" :distance "4%")
+                      :width "30px"
+                      :height "100%"
+                      :anchor "left center")
   (bar))
+
+(defwidget cal []
+	(box :class "cal-box" 
+		 :orientation "v"
+	     (box :class "cal-inner-box"
+              :orientation "v" :space-evenly false
+              date
+	          (calendar :class "cal" 
+			            :day calendar_day 
+			            :month calendar_month 
+			            :year calendar_year))))
+
+(defpoll date :interval "10h" "date '+%b %d, %Y'")
+(defpoll calendar_day :interval "10h" "date +%d")
+(defpoll calendar_month :interval "10h" "date +%m")
+(defpoll calendar_year :interval "10h" "date +%Y")
+
+(defwindow calendar
+  :monitor 0
+	:geometry (geometry :x "10px" 
+						:y "10px" 
+						:width "270px" 
+						:height "60px")
+  (cal))
