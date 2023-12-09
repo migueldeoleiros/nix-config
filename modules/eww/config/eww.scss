@@ -65,3 +65,26 @@
 .time {
   margin-top: 5px;
 }
+.time button:hover {
+  color: #7BA3F4;
+}
+
+.cal-box {
+  margin: 10px;
+}
+.cal {
+  color: #AFB4C0;
+}
+calendar.header {
+  color: #7BA3F4;
+  font-weight: bold;
+}
+calendar.highlight {
+  color: #EA75CB;
+  font-weight: bold;
+}
+calendar:selected{
+  background-color: #404159;
+  border-radius: 50px;
+  color: #d4dae8;
+}
