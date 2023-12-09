@@ -1,9 +1,15 @@
 ;; -*- mode: lisp -*-
 
-(defwidget bar []
+(defwidget bar1 []
   (centerbox :orientation "v" 
     (time)
-    (workspaces)
+    (workspaces1)
+    (sidestuff)
+    ))
+(defwidget bar2 []
+  (centerbox :orientation "v" 
+    (time)
+    (workspaces2)
     (sidestuff)
     ))
 
@@ -19,7 +25,7 @@
             :onchange "")
   ))
 
-(defwidget workspaces []
+(defwidget workspaces1 []
   (box :orientation "v"
        :class "workspaces"
        :space-evenly false
@@ -34,6 +40,22 @@
                :class {activeworkspace == 4 ? "wsp-active" : "wsp-inactive"} 4)
        (button :onclick "hyprctl dispatch split-workspace 5"
                :class {activeworkspace == 5 ? "wsp-active" : "wsp-inactive"} 5)))
+
+(defwidget workspaces2 []
+  (box :orientation "v"
+       :class "workspaces"
+       :space-evenly false
+       :spacing 8
+       (button :onclick "hyprctl dispatch split-workspace 1"
+               :class {activeworkspace == 6 ? "wsp-active" : "wsp-inactive"} 1)
+       (button :onclick "hyprctl dispatch split-workspace 2"
+               :class {activeworkspace == 7 ? "wsp-active" : "wsp-inactive"} 2)
+       (button :onclick "hyprctl dispatch split-workspace 3"
+               :class {activeworkspace == 8 ? "wsp-active" : "wsp-inactive"} 3)
+       (button :onclick "hyprctl dispatch split-workspace 4"
+               :class {activeworkspace == 9 ? "wsp-active" : "wsp-inactive"} 4)
+       (button :onclick "hyprctl dispatch split-workspace 5"
+               :class {activeworkspace == 10 ? "wsp-active" : "wsp-inactive"} 5)))
 
 (defwidget metric [label value onchange class]
   (box :orientation "v"
@@ -67,7 +89,7 @@
 (defpoll hour :interval "10s" "date +%H")
 (defpoll min  :interval "10s" "date +%M")
 
-(defwindow bar
+(defwindow bar1
   :monitor 0
   :windowtype "dock"
   :exclusive true
@@ -76,7 +98,18 @@
                       :width "30px"
                       :height "100%"
                       :anchor "left center")
-  (bar))
+  (bar1))
+
+(defwindow bar2
+  :monitor 1
+  :windowtype "dock"
+  :exclusive true
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "30px"
+                      :height "100%"
+                      :anchor "left center")
+  (bar2))
 
 (defwidget cal []
 	(box :class "cal-box" 
