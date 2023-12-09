@@ -25,7 +25,8 @@
         monitor=,preferred,auto,1,mirror,eDP-1
         
         # Execute at launch
-        exec-once = hyprpaper & waybar & dunst
+        exec-once = hyprpaper & dunst
+        exec-once = eww open-many bar1 bar2
         exec-once = emacs --daemon 
         
         # source = ~/.config/hypr/myColors.conf
@@ -98,7 +99,7 @@
             animation = border, 1, 10, default
             animation = borderangle, 1, 8, default
             animation = fade, 1, 7, default
-            animation = workspaces, 1, 6, default
+            animation = workspaces, 1, 6, default, slidevert
         }
         
         dwindle {
@@ -143,7 +144,9 @@
         bind = ,Print, exec, wayshot -f ~/pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).jpg -s "$(slurp)"
 
         # Switch waybar on/off
-        bindr = $mod, B, exec, kill $(pidof waybar) || waybar
+        #bindr = $mod, B, exec, kill $(pidof waybar) || waybar
+        # Switch eww on/off
+        bindr = $mod, B, exec, eww kill || eww open-many bar1 bar2 
 
         # audio and brightness
         bind=,xf86audioplay,exec,playerctl play-pause

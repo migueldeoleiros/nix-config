@@ -1,7 +1,8 @@
 [
   ./hyprland.nix
   ./hyprpaper.nix
-  ./waybar.nix
   ./dunst.nix
   ./networkmanager.nix
+  ./eww/eww.nix
+  #./waybar.nix
 ]

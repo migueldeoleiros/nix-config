@@ -11,7 +11,6 @@
     import ../modules/gtk ++
     import ../modules/qutebrowser ++
     import ../modules/bitwarden ++
-    import ../modules/eww ++
     import ../modules/home
   );
 
