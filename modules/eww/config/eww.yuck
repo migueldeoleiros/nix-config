@@ -20,16 +20,21 @@
   ))
 
 (defwidget workspaces []
-  (box :class "workspaces"
-       :orientation "v"
+  (box :orientation "v"
+       :class "workspaces"
        :space-evenly false
        :valign "top"
        :spacing 8
-    (button :onclick "hyprctl dispatch split-workspace 1" 1)
-    (button :onclick "hyprctl dispatch split-workspace 2" 2)
-    (button :onclick "hyprctl dispatch split-workspace 3" 3)
-    (button :onclick "hyprctl dispatch split-workspace 4" 4)
-    (button :onclick "hyprctl dispatch split-workspace 5" 5)))
+       (button :onclick "hyprctl dispatch split-workspace 1"
+               :class {activeworkspace == 1 ? "wsp-active" : "wsp-inactive"} 1)
+       (button :onclick "hyprctl dispatch split-workspace 2"
+               :class {activeworkspace == 2 ? "wsp-active" : "wsp-inactive"} 2)
+       (button :onclick "hyprctl dispatch split-workspace 3"
+               :class {activeworkspace == 3 ? "wsp-active" : "wsp-inactive"} 3)
+       (button :onclick "hyprctl dispatch split-workspace 4"
+               :class {activeworkspace == 4 ? "wsp-active" : "wsp-inactive"} 4)
+       (button :onclick "hyprctl dispatch split-workspace 5"
+               :class {activeworkspace == 5 ? "wsp-active" : "wsp-inactive"} 5)))
 
 (defwidget metric [label value onchange class]
   (box :orientation "v"
@@ -46,6 +51,9 @@
 
 (defpoll volume :interval "1s"
   "amixer sget Master | awk -F '[^0-9]+' '/Left:/{print $3}'")
+
+(defpoll activeworkspace :interval "0.2s"
+  "hyprctl activeworkspace | awk '/^workspace ID/ {print $3}'")
 
 (defwidget time []
   (box :class "time" :orientation "v" :space-evenly false :valign "top"
