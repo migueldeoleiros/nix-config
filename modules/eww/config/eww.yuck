@@ -11,10 +11,12 @@
   (box :class "sidestuff" :orientation "v" :space-evenly false :valign "end"
     (metric :label "󰕾"
             :value volume
+            :class "volume"
             :onchange "amixer sset Master {}%")
     (metric :label "󱊣"
-            :value battery
-            :onchange "acpi")
+            :value {EWW_BATTERY.BAT1.capacity}
+            :class "battery"
+            :onchange "")
   ))
 
 (defwidget workspaces []
@@ -29,9 +31,9 @@
     (button :onclick "hyprctl dispatch split-workspace 4" 4)
     (button :onclick "hyprctl dispatch split-workspace 5" 5)))
 
-(defwidget metric [label value onchange]
+(defwidget metric [label value onchange class]
   (box :orientation "v"
-       :class "metric"
+       :class class
        :space-evenly false
     (box :class "label" label)
     (scale :min 0
@@ -44,9 +46,6 @@
 
 (defpoll volume :interval "1s"
   "amixer sget Master | awk -F '[^0-9]+' '/Left:/{print $3}'")
-
-(defpoll battery :interval "1s"
-  "acpi -b | grep 'Battery 1' | awk -F ', ' '{print $2}' | awk -F '%' '{print $1}'")
 
 (defwidget time []
   (box :class "time" :orientation "v" :space-evenly false :valign "top"

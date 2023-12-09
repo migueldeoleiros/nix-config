@@ -8,38 +8,51 @@
   color: #d4dae8;
   padding: 10px;
 }
+
 .calendar {
   background-color: #090a11;
   color: #d4dae8;
-  padding: 10px;
   border-radius: 10px;
 }
 
 // Styles on classes (see eww.yuck for more information)
 
-.sidestuff slider {
+.volume scale trough highlight {
   all: unset;
-  color: #ffd5cd;
-}
-
-.metric scale trough highlight {
-  all: unset;
-  background-color: #7BA3F4;
+  background-color: #1A63F4;
   color: #000000;
   border-radius: 10px;
 }
-.metric scale trough {
+.volume scale trough {
   all: unset;
   background-color: #404159;
   border-radius: 50px;
   min-width: 5px;
   min-height: 50px;
-  margin-top: 10px;
+  margin-top: 8px;
   margin-bottom: 20px;
 }
-.label-ram {
-  font-size: large;
+
+.battery scale trough highlight {
+  all: unset;
+  background-color: #14CC4B;
+  color: #000000;
+  border-radius: 10px;
 }
+.battery scale trough {
+  all: unset;
+  background-color: #404159;
+  border-radius: 50px;
+  min-width: 5px;
+  min-height: 50px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
 .workspaces button:hover {
   color: #7BA3F4;
+}
+
+.time {
+  margin-top: 5px;
 }
