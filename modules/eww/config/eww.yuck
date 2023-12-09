@@ -9,9 +9,9 @@
 
 (defwidget sidestuff []
   (box :class "sidestuff" :orientation "v" :space-evenly false :valign "end"
-    (metric :label "󰕾"
+    (metric :label {audio == "on" ? "󰕾" : "󰖁"}
             :value volume
-            :class "volume"
+            :class {audio == "on" ? "volume" : "volume-mute"}
             :onchange "amixer sset Master {}%")
     (metric :label "󱊣"
             :value {EWW_BATTERY.BAT1.capacity}
@@ -23,7 +23,6 @@
   (box :orientation "v"
        :class "workspaces"
        :space-evenly false
-       :valign "top"
        :spacing 8
        (button :onclick "hyprctl dispatch split-workspace 1"
                :class {activeworkspace == 1 ? "wsp-active" : "wsp-inactive"} 1)
@@ -49,14 +48,17 @@
            :value value
            :onchange onchange)))
 
-(defpoll volume :interval "1s"
+(defpoll volume :interval "0.5s"
   "amixer sget Master | awk -F '[^0-9]+' '/Left:/{print $3}'")
+
+(defpoll audio :interval "0.5s"
+  "scripts/ismute")
 
 (defpoll activeworkspace :interval "0.2s"
   "hyprctl activeworkspace | awk '/^workspace ID/ {print $3}'")
 
 (defwidget time []
-  (box :class "time" :orientation "v" :valign "top"
+  (box :class "time" :orientation "v" 
 	   (button :onclick "scripts/popup calendar"	
                (box :orientation "v"
                     :space-evenly false

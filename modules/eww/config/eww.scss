@@ -32,6 +32,21 @@
   margin-top: 8px;
   margin-bottom: 20px;
 }
+.volume-mute scale trough highlight {
+  all: unset;
+  background-color: #0A2966;
+  color: #000000;
+  border-radius: 10px;
+}
+.volume-mute scale trough {
+  all: unset;
+  background-color: #404159;
+  border-radius: 50px;
+  min-width: 5px;
+  min-height: 50px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
 
 .battery scale trough highlight {
   all: unset;
