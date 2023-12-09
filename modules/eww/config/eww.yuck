@@ -2,13 +2,13 @@
 
 (defwidget bar1 []
   (centerbox :orientation "v" 
-    (time)
+    (time :open-calendar "scripts/popup calendar1")
     (workspaces1)
     (sidestuff)
     ))
 (defwidget bar2 []
   (centerbox :orientation "v" 
-    (time)
+    (time :open-calendar "scripts/popup calendar2")
     (workspaces2)
     (sidestuff)
     ))
@@ -79,9 +79,9 @@
 (defpoll activeworkspace :interval "0.2s"
   "hyprctl activeworkspace | awk '/^workspace ID/ {print $3}'")
 
-(defwidget time []
+(defwidget time [open-calendar]
   (box :class "time" :orientation "v" 
-	   (button :onclick "scripts/popup calendar"	
+	   (button :onclick open-calendar
                (box :orientation "v"
                     :space-evenly false
                     hour min))))
@@ -111,26 +111,4 @@
                       :anchor "left center")
   (bar2))
 
-(defwidget cal []
-	(box :class "cal-box" 
-		 :orientation "v"
-	     (box :class "cal-inner-box"
-              :orientation "v" :space-evenly false
-              date
-	          (calendar :class "cal" 
-			            :day calendar_day 
-			            :month calendar_month 
-			            :year calendar_year))))
-
-(defpoll date :interval "10h" "date '+%b %d, %Y'")
-(defpoll calendar_day :interval "10h" "date +%d")
-(defpoll calendar_month :interval "10h" "date +%m")
-(defpoll calendar_year :interval "10h" "date +%Y")
-
-(defwindow calendar
-  :monitor 0
-	:geometry (geometry :x "10px" 
-						:y "10px" 
-						:width "270px" 
-						:height "60px")
-  (cal))
+(include "calendar.yuck")
