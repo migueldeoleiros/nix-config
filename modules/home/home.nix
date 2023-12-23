@@ -17,9 +17,7 @@
       telegram-desktop
       amberol
       evince
-      lutris
       gradience
-      steam
       webcord
       gnome.gnome-font-viewer
       gnome.nautilus
@@ -28,7 +26,6 @@
       pixelorama
       gimp
       inkscape
-      osu-lazer-bin
       anki
       (pkgs.callPackage ../../pkgs/st.nix {})
     ];
