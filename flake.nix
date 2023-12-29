@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration";
+  description = "NixOS and Nix configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -25,7 +25,14 @@
       };
     in {
       nixosConfigurations = (
-        import ./host {
+        import ./nixos {
+          inherit (nixpkgs) lib;
+          inherit inputs nixpkgs home-manager kmonad hyprland vars;
+        }
+      );
+
+      homeConfigurations = (
+        import ./nix {
           inherit (nixpkgs) lib;
           inherit inputs nixpkgs home-manager kmonad hyprland vars;
         }
