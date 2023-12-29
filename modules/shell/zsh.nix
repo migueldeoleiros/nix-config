@@ -1,8 +1,8 @@
 { config, pkgs, vars, ... }:
 
 {
-  home-manager.users.${vars.user} = {
-    programs.zsh = {
+  programs = {
+    zsh = {
       enable = true;
       autocd = true;
       enableCompletion = true;
@@ -10,6 +10,18 @@
       syntaxHighlighting.enable = true;
 
       initExtra = ''
+       # Change PATH to make sure local packages have priority
+
+       # Get the first two path variables
+       FIRST_PATH_VAR=$(echo $PATH | cut -d ":" -f 1)
+       SECOND_PATH_VAR=$(echo $PATH | cut -d ":" -f 2)
+
+       # Remove the first two path variables from the PATH
+       export PATH=$(echo $PATH | cut -d ":" -f 3-)
+
+       # Append the first two path variables to the end of the PATH
+       export PATH=$PATH:$FIRST_PATH_VAR:$SECOND_PATH_VAR
+
         #vi mode
         bindkey -v
         export KEYTIMEOUT=1
@@ -30,7 +42,7 @@
       '';
     };
     
-    programs.starship = {
+    starship = {
       enable = true;
       enableZshIntegration = true;
       settings = {
@@ -46,9 +58,16 @@
       };
     };
     
-    programs.fzf = {
+    fzf = {
       enable = true;
       enableZshIntegration = true;
     };
+  };
+
+  home = {
+    packages = with pkgs; [
+      eza
+      trash-cli
+    ];
   };
 }

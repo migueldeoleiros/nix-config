@@ -1,12 +1,12 @@
 {config, pkgs, inputs, vars, ...}:
 
 {
-  home-manager.users.${vars.user} = {
-    home.packages = with pkgs; [
+  home = {
+    packages = with pkgs; [
       hyprpaper
     ];
 
-    home.file = {
+    file = {
       ".config/hypr/hyprpaper.conf".text = ''
         preload = ~/wallpapers/darkWhosh.png
         wallpaper = eDP-1,~/wallpapers/darkWhosh.png

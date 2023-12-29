@@ -1,53 +1,51 @@
 {pkgs, config, lib, vars, ...}:
 
 {
-  home-manager.users.${vars.user} = {
-    home = {
-      packages = with pkgs; [
-        dconf
-        gnome.dconf-editor
-      ];
-      
-      pointerCursor = {
-        package = pkgs.bibata-cursors;
-        name = "Bibata-Modern-Classic";
-        size = 24;
-        gtk.enable = true;
-        x11.enable = true;
-      };
-    };
+  home = {
+    packages = with pkgs; [
+      dconf
+      gnome.dconf-editor
+    ];
     
-    dconf = {
-      enable = true;
-      settings = {
-        "org/gnome/desktop/interface" = {
-          color-scheme = "prefer-dark";
-        };
+    pointerCursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 24;
+      gtk.enable = true;
+      x11.enable = true;
+    };
+  };
+  
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
       };
     };
+  };
 
-    gtk = {
-      enable = true;
-      gtk3 = {
-        extraConfig = {
-          gtk-application-prefer-dark-theme = 1;
-        };
-        bookmarks = [
-          "file:///home/miguel/universidad"
-          "sftp://192.168.1.135/volume1/home/admin asustor"
-        ];
+  gtk = {
+    enable = true;
+    gtk3 = {
+      extraConfig = {
+        gtk-application-prefer-dark-theme = 1;
       };
-      gtk4 = {
-        extraConfig = {
-          gtk-application-prefer-dark-theme = 1;
-        };
+      bookmarks = [
+        "file:///home/miguel/universidad"
+        "sftp://192.168.1.135/volume1/home/admin asustor"
+      ];
+    };
+    gtk4 = {
+      extraConfig = {
+        gtk-application-prefer-dark-theme = 1;
       };
     };
-    
-    # use gtk theme on qt apps
-    qt = {
-      enable = true;
-      platformTheme = "gtk";
-    };
+  };
+  
+  # use gtk theme on qt apps
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
   };
 }
