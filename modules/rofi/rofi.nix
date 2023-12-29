@@ -1,10 +1,8 @@
 { config, pkgs, vars, ... }:
 
 {
-  home-manager.users.${vars.user} = {
-    programs = {
-      rofi.enable = true;
-      rofi.theme = ./EntropiaCenter.rasi;
-    };
+  programs = {
+    rofi.enable = true;
+    rofi.theme = ./themes/EntropiaCenter.rasi;
   };
 }
