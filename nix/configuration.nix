@@ -8,6 +8,7 @@
     import ../modules/gtk ++
     import ../modules/bitwarden ++
     #import ../modules/hyprland ++
+    import ../modules/i3 ++
     import ../modules/home
   );
 
