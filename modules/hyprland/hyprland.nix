@@ -125,7 +125,7 @@
       
       $mod = SUPER
       
-      bind = $mod, Return, exec, alacritty
+      bind = $mod, Return, exec, kitty
       bind = $mod, Q, killactive, 
       bind = $mod SHIFT, Escape, exit, 
       bind = $mod, F, exec, nautilus
