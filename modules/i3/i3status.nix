@@ -40,7 +40,7 @@
       "time" = {
         position = 4;
         settings = {
-          format = "%d.%m.%Y %H:%M";
+          format = "%d.%m.%Y %H:%M ";
         };
       };
     };

@@ -64,7 +64,7 @@ in
       window = {
         border = 2;
         hideEdgeBorders = "smart";
-        titlebar = true;
+        titlebar = false;
         commands = [
           {command = "floating enable"; criteria.title = "xclock";}
           {command = "floating enable"; criteria.title = "Copying";}
@@ -83,6 +83,8 @@ in
         {command = "--no-startup-id xset -dpms s off"; always = true;}
         {command = "--no-startup-id feh --no-fehbg --bg-scale ~/wallpapers/darkWhosh.png"; always = true;}
         {command = "--no-startup-id setxkbmap -option ctrl:nocaps us"; always = true;}
+        {command = "--no-startup-id xset r rate 300 50"; always = true;}
+        {command = "--no-startup-id emacs --daemon"; always = true;}
       ];
       modifier = "Mod4";
       terminal = "kitty";
@@ -95,6 +97,7 @@ in
 
         "${mod}+space" = "exec rofi -show drun";
         "${mod}+Return" = "exec kitty";
+        "${mod}+Shift+e" = "exec emacsclient --create-frame";
 
         "mod2+f1" = "exec bash ~/.scripts/kill.sh";
 
@@ -105,8 +108,8 @@ in
         "${mod}+ctrl+e" = "exec setxkbmap -option ctrl:nocaps us";
 
         # audio and brightness
-        "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_SINK@ 5%-";
-        "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_SINK@ 5%+";
+        "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_SINK@ 5%+";
+        "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_SINK@ 5%-";
         "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
         "XF86AudioPlay" = "exec playerctl play-pause";
         "XF86AudioNext" = "exec playerctl next";
@@ -218,6 +221,12 @@ in
         {
           statusCommand = "i3status";
           
+          fonts = {
+            names = [ "DejaVu Sans Mono" ];
+            style = "regular";
+            size = 11.0;
+          };
+
           trayOutput = "eDP";
           trayPadding = 5;
           
