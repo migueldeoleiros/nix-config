@@ -102,11 +102,11 @@ in
 
         "mod2+f1" = "exec bash ~/.scripts/kill.sh";
 
-        "mod2+ctrl+shift+q" = "exec xkill";
+        "${mod}+ctrl+Shift+q" = "exec --no-startup-id xkill";
         "${mod}+ctrl+n" = "exec networkmanager_dmenu";
-        "Print" = "exec scrot -s";
-        "${mod}+ctrl+s" = "exec setxkbmap -option ctrl:nocaps es";
-        "${mod}+ctrl+e" = "exec setxkbmap -option ctrl:nocaps us";
+        "Print" = "exec --no-startup-id scrot -s";
+        "${mod}+ctrl+s" = "exec --no-startup-id setxkbmap -option ctrl:nocaps es";
+        "${mod}+ctrl+e" = "exec --no-startup-id setxkbmap -option ctrl:nocaps us";
 
         # audio and brightness
         "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_SINK@ 5%+";
