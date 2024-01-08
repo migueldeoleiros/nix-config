@@ -8,7 +8,7 @@ in
     packages = with pkgs; [
       brightnessctl playerctl
       libva libsForQt5.qt5ct
-      feh scrot
+      feh scrot picom
     ];
   };
   xsession.windowManager.i3 = {
@@ -85,6 +85,7 @@ in
         {command = "--no-startup-id setxkbmap -option ctrl:nocaps us"; always = true;}
         {command = "--no-startup-id xset r rate 300 50"; always = true;}
         {command = "--no-startup-id emacs --daemon"; always = true;}
+        {command = "--no-startup-id picom"; always = true;}
       ];
       modifier = "Mod4";
       terminal = "kitty";
