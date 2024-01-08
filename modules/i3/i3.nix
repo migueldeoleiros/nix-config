@@ -210,10 +210,10 @@ in
       };
       modes ={
         resize = {
-          h = "resize shrink width 5 px or 5 ppt";
-          j = "resize grow height 5 px or 5 ppt";
-          k = "resize shrink height 5 px or 5 ppt";
-          l = "resize grow width 5 px or 5 ppt";
+          h = "resize grow width 5 px or 5 ppt";
+          j = "resize shrink height 5 px or 5 ppt";
+          k = "resize grow height 5 px or 5 ppt";
+          l = "resize shrink width 5 px or 5 ppt";
           Return = "mode default";
           Escape = "mode default";
         };
