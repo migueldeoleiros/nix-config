@@ -11,7 +11,6 @@
       alacritty
       neovim
       tldr
-      ranger
       tmux
       gh
       firefox
@@ -28,6 +27,7 @@
       gnome.nautilus
       gnome.gvfs
       gnome.eog
+      gnome.pomodoro
       qbittorrent
       pixelorama
       gimp
