@@ -6,6 +6,10 @@
     homeDirectory = "/home/${vars.user}";
 
     stateVersion = "23.05";
+
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
     
     packages = with pkgs; [
       alacritty
