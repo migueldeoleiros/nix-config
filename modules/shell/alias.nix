@@ -43,5 +43,11 @@
     
     #check the weather in Coruna
     weather="curl wttr.in/Coruna";
+
+    #arch linux
+    pin="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S" ;
+    pre="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns";
+    parus="paru -Slq | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S" ;
+    parur="paru -Qq | fzf --multi --preview 'paru -Qi {1}' | xargs -ro sudo paru -Rns";
   };
 }
