@@ -33,6 +33,7 @@
       };
       bookmarks = [
         "file:///home/miguel/universidad"
+        "file:///home/miguel/merlin"
         "sftp://192.168.1.135/volume1/home/admin asustor"
       ];
     };

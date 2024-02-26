@@ -29,6 +29,13 @@
   xdg = {
     enable = true;
     systemDirs.data = [ "/home/${vars.user}/.nix-profile/share" ];
+    userDirs = {
+      desktop = "${config.home.homeDirectory}/";
+      download = "${config.home.homeDirectory}/downloads";
+      documents = "${config.home.homeDirectory}/documents";
+      music = "${config.home.homeDirectory}/music";
+      pictures = "${config.home.homeDirectory}/pictures";
+    };
   };
 
   # Nix Package Manager Settings
