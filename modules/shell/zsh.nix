@@ -22,6 +22,9 @@
        # Append the first two path variables to the end of the PATH
        export PATH=$PATH:$FIRST_PATH_VAR:$SECOND_PATH_VAR
 
+       # flutter config
+       export PATH=/opt/flutter/bin:$PATH
+
         #vi mode
         bindkey -v
         export KEYTIMEOUT=1

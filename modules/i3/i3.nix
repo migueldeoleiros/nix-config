@@ -81,7 +81,7 @@ in
       startup = [
         {command = "--no-startup-id xrandr --output HDMI-1-0 --auto --right-of eDP"; always = true;}
         {command = "--no-startup-id xset -dpms s off"; always = true;}
-        {command = "--no-startup-id feh --no-fehbg --bg-scale ~/wallpapers/darkWhosh.png"; always = true;}
+        {command = "--no-startup-id feh --no-fehbg --bg-scale ~/wallpapers/hackUDC_Dark.png"; always = true;}
         {command = "--no-startup-id setxkbmap -option ctrl:nocaps us"; always = true;}
         {command = "--no-startup-id xset r rate 300 50"; always = true;}
         {command = "--no-startup-id emacs --daemon"; always = true;}
